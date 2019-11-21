@@ -10,13 +10,17 @@ class Kata::ShoppingCart
     add_item_quantity(product, 1.0)
   end
 
+  def total_item_quantity(product, quantity)
+    if @product_quantities.key?(product)
+      @product_quantities[product] + quantity
+    else
+      quantity
+    end
+  end
+
   def add_item_quantity(product, quantity)
     @items << Kata::ProductQuantity.new(product, quantity)
-    @product_quantities[product] = if @product_quantities.key?(product)
-                                    @product_quantities[product] + quantity
-                                  else
-                                    quantity
-                                  end
+    @product_quantities[product] = total_item_quantity(product, quantity)
   end
 
   def handle_offers(receipt, offers, catalog)
