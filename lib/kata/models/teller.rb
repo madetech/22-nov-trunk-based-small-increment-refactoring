@@ -16,7 +16,7 @@ class Kata::Teller
         receipt.add_product(item.product, item.quantity, unit_price, price)
       end
 
-      the_cart.awful_offer_handling_hack(receipt, @offers, @catalog)
+      the_cart.awful_offer_handling_hack!(receipt, @offers, @catalog)
     end
   end
 end
