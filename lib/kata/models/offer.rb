@@ -24,7 +24,7 @@ end
 
 class Kata::TenPercentDiscountOffer < Kata::Offer
   def initialize(product, argument)
-    super('TEN_PERCENT_DISCOUNT', product, argument)
+    super(Kata::SpecialOfferType::TEN_PERCENT_DISCOUNT, product, argument)
   end
 
   def divider
@@ -34,7 +34,7 @@ end
 
 class Kata::TwoForAmountOffer < Kata::Offer
   def initialize(product, argument)
-    super('TWO_FOR_AMOUNT', product, argument)
+    super(Kata::SpecialOfferType::TWO_FOR_AMOUNT, product, argument)
   end
 
   def divider
@@ -44,7 +44,7 @@ end
 
 class Kata::FiveForAmountOffer < Kata::Offer
   def initialize(product, argument)
-    super('FIVE_FOR_AMOUNT', product, argument)
+    super(Kata::SpecialOfferType::FIVE_FOR_AMOUNT, product, argument)
   end
 
   def divider
