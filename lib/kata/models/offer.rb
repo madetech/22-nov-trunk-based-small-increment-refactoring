@@ -14,7 +14,7 @@ end
 
 class Kata::ThreeForTwoOffer < Kata::Offer
   def initialize(product, argument)
-    super('THREE_FOR_TWO', product, argument)
+    super(Kata::SpecialOfferType::THREE_FOR_TWO, product, argument)
   end
 
   def divider
