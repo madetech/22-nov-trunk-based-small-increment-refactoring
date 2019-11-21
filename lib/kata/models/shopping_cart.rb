@@ -21,7 +21,12 @@ class Kata::ShoppingCart
     @product_quantities[product] = total_item_quantity(product, quantity)
   end
 
-  def awful_offer_handling_hack(receipt, offers, catalog)
+  def three_for_two(quantity, unit_price, number_of_discount_divider, product)
+    discount_amount = quantity * unit_price - ((number_of_discount_divider * 2 * unit_price) + quantity % 3 * unit_price)
+    discount = Kata::Discount.new(product, "3 for 2", discount_amount)
+  end
+
+  def awful_offer_handling_hack!(receipt, offers, catalog)
     @product_quantities.keys.each do |product|
       quantity = @product_quantities[product].to_i
       if offers.key?(product)
@@ -46,8 +51,7 @@ class Kata::ShoppingCart
         number_of_discount_divider = quantity / discount_divider
 
         if offer.offer_type == Kata::SpecialOfferType::THREE_FOR_TWO && quantity > 2
-          discount_amount = quantity * unit_price - ((number_of_discount_divider * 2 * unit_price) + quantity % 3 * unit_price)
-          discount = Kata::Discount.new(product, "3 for 2", discount_amount)
+          discount = three_for_two(quantity, unit_price, number_of_discount_divider, product)
         end
         if offer.offer_type == Kata::SpecialOfferType::TEN_PERCENT_DISCOUNT
           discount = Kata::Discount.new(product, offer.argument.to_s + "% off", quantity * unit_price * offer.argument / 100.0)
