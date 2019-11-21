@@ -1,4 +1,4 @@
 module Kata::ProductUnit
-  EACH = Object.new
-  KILO = Object.new
+  EACH = 'EACH'.freeze
+  KILO = 'KILO'.freeze
 end
