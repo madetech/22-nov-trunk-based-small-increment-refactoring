@@ -49,23 +49,12 @@ class Kata::ReceiptPrinter
     end
 
     result.concat("\n")
-<<<<<<< HEAD
-    price_presentation = format_price(receipt.total_price.to_f)
-    total = 'Total: '
-    whitespace = self.class.whitespace(@columns - total.size - price_presentation.size)
-    result.concat(total, whitespace, price_presentation)
-=======
     result.concat(receipt_last_line(receipt.total_price))
->>>>>>> TCR!
     result.to_s
   end
 
   def self.present_quantity(item)
-    if Kata::ProductUnit::EACH == item.product.unit
-      '%x' % item.quantity.to_i
-    else
-      '%.3f' % item.quantity
-    end
+    Kata::ProductUnit::EACH == item.product.unit ? '%x' % item.quantity.to_i : '%.3f' % item.quantity
   end
 
   def self.whitespace(whitespace_size)
