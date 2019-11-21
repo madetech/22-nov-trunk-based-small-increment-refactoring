@@ -15,7 +15,6 @@ class Kata::ReceiptPrinter
 
     result.concat("\n")
     result.concat(receipt_last_line(receipt.total_price))
-    result.to_s
   end
 
   def present_quantity(item)
