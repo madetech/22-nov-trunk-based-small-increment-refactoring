@@ -3,6 +3,31 @@ class Kata::ReceiptPrinter
     @columns = columns
   end
 
+  def print_receipt(receipt)
+    result = ''
+    receipt.items.each do |item|
+      result.concat(receipt_item_lines(item))
+    end
+
+    receipt.discounts.each do |discount|
+      result.concat(receipt_discount_lines(discount))
+    end
+
+    result.concat("\n")
+    result.concat(receipt_last_line(receipt.total_price))
+    result.to_s
+  end
+
+  def present_quantity(item)
+    Kata::ProductUnit::EACH == item.product.unit ? '%x' % item.quantity.to_i : '%.3f' % item.quantity
+  end
+
+  def whitespace(whitespace_size)
+    ' ' * whitespace_size
+  end
+
+  private
+
   def receipt_item_lines(item)
     price = format_price(item.total_price)
     quantity = present_quantity(item)
@@ -37,31 +62,6 @@ class Kata::ReceiptPrinter
 
     "#{total}#{whitespace}#{price_presentation}"
   end
-
-  def print_receipt(receipt)
-    result = ''
-    receipt.items.each do |item|
-      result.concat(receipt_item_lines(item))
-    end
-
-    receipt.discounts.each do |discount|
-      result.concat(receipt_discount_lines(discount))
-    end
-
-    result.concat("\n")
-    result.concat(receipt_last_line(receipt.total_price))
-    result.to_s
-  end
-
-  def present_quantity(item)
-    Kata::ProductUnit::EACH == item.product.unit ? '%x' % item.quantity.to_i : '%.3f' % item.quantity
-  end
-
-  def whitespace(whitespace_size)
-    ' ' * whitespace_size
-  end
-
-  private
 
   def format_price(price)
     '%.2f' % price
