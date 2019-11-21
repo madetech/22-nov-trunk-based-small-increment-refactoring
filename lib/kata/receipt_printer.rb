@@ -3,22 +3,26 @@ class Kata::ReceiptPrinter
     @columns = columns
   end
 
+  def receipt_item_lines(item)
+    price = "%.2f" % item.total_price
+    quantity = self.class.present_quantity(item)
+    name = item.product.name
+    unit_price = "%.2f" % item.price
+
+    whitespace_size = @columns - name.size - price.size
+    line = name + self.class.whitespace(whitespace_size) + price + "\n"
+
+    if item.quantity != 1
+      line += "  " + unit_price + " * " + quantity + "\n"
+    end
+
+    return line
+  end
+
   def print_receipt(receipt)
     result = ""
     receipt.items.each do |item|
-      price = "%.2f" % item.total_price
-      quantity = self.class.present_quantity(item)
-      name = item.product.name
-      unit_price = "%.2f" % item.price
-
-      whitespace_size = @columns - name.size - price.size
-      line = name + self.class.whitespace(whitespace_size) + price + "\n"
-
-      if item.quantity != 1
-        line += "  " + unit_price + " * " + quantity + "\n"
-      end
-
-      result.concat(line)
+      result.concat(receipt_item_lines(item))
     end
 
     for discount in receipt.discounts do
