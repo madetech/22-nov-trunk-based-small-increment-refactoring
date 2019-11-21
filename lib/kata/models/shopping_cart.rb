@@ -31,21 +31,20 @@ class Kata::ShoppingCart
         unit_price = catalog.unit_price(product)
         discount = nil
         x = 1
-        if offer.offer_type == Kata::SpecialOfferType::THREE_FOR_TWO
+        case offer.offer_type
+        when Kata::SpecialOfferType::THREE_FOR_TWO
           x = 3
-
-        elsif offer.offer_type == Kata::SpecialOfferType::TWO_FOR_AMOUNT
+        when Kata::SpecialOfferType::TWO_FOR_AMOUNT
           x = 2
           if quantity >= 2
             total = offer.argument * quantity / x + quantity % 2 * unit_price
             discount_n = unit_price * quantity - total
             discount = Kata::Discount.new(product, "2 for " + offer.argument.to_s, discount_n)
           end
-
-        end
-        if offer.offer_type == Kata::SpecialOfferType:: FIVE_FOR_AMOUNT
+        when Kata::SpecialOfferType:: FIVE_FOR_AMOUNT
           x = 5
         end
+
         number_of_x = quantity / x
         if offer.offer_type == Kata::SpecialOfferType::THREE_FOR_TWO && quantity > 2
           discount_amount = quantity * unit_price - ((number_of_x * 2 * unit_price) + quantity % 3 * unit_price)
