@@ -60,9 +60,7 @@ class Kata::ShoppingCart
       if offers.key?(product)
         offer = offers[product]
         unit_price = catalog.unit_price(product)
-
         discount_divider = divider(offer.offer_type)
-
         number_of_discount_divider = quantity / discount_divider
 
         if offer.offer_type == Kata::SpecialOfferType::TWO_FOR_AMOUNT && quantity >= 2
