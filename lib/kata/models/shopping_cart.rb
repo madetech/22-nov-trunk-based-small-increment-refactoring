@@ -48,17 +48,17 @@ class Kata::ShoppingCart
           discount_divider = 3
         when Kata::SpecialOfferType::TWO_FOR_AMOUNT
           discount_divider = 2
-          if quantity >= 2
-            total = offer.argument * quantity / discount_divider + quantity % 2 * unit_price
-            discount_n = unit_price * quantity - total
-            discount = Kata::Discount.new(product, "2 for " + offer.argument.to_s, discount_n)
-          end
         when Kata::SpecialOfferType:: FIVE_FOR_AMOUNT
           discount_divider = 5
         end
 
         number_of_discount_divider = quantity / discount_divider
 
+        if offer.offer_type == Kata::SpecialOfferType::TWO_FOR_AMOUNT && quantity >= 2
+          total = offer.argument * quantity / discount_divider + quantity % 2 * unit_price
+          discount_n = unit_price * quantity - total
+          discount = Kata::Discount.new(product, "2 for " + offer.argument.to_s, discount_n)
+        end
         if offer.offer_type == Kata::SpecialOfferType::THREE_FOR_TWO && quantity > 2
           discount = three_for_two(quantity, unit_price, number_of_discount_divider, product)
         end
