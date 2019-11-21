@@ -30,6 +30,14 @@ class Kata::ReceiptPrinter
     "#{description}(#{product_presentation})#{whitespace}-#{price_presentation}\n"
   end
 
+  def receipt_last_line(total_price)
+    price_presentation = "%.2f" % total_price.to_f
+    total = "Total: "
+    whitespace = self.class.whitespace(@columns - total.size - price_presentation.size)
+
+    return "#{total}#{whitespace}#{price_presentation}" 
+  end
+
   def print_receipt(receipt)
     result = ''
     receipt.items.each do |item|
@@ -39,11 +47,16 @@ class Kata::ReceiptPrinter
     receipt.discounts.each do |discount|
       result.concat(receipt_discount_lines(discount))
     end
+
     result.concat("\n")
+<<<<<<< HEAD
     price_presentation = format_price(receipt.total_price.to_f)
     total = 'Total: '
     whitespace = self.class.whitespace(@columns - total.size - price_presentation.size)
     result.concat(total, whitespace, price_presentation)
+=======
+    result.concat(receipt_last_line(receipt.total_price))
+>>>>>>> TCR!
     result.to_s
   end
 
