@@ -30,6 +30,11 @@ class Kata::ShoppingCart
     Kata::Discount.new(product, offer.argument.to_s + "% off", quantity * unit_price * offer.argument / 100.0)
   end
 
+  def five_for_amount(product, unit_price, quantity, discount_divider, offer, number_of_discount_divider)
+    discount_total = unit_price * quantity - (offer.argument * number_of_discount_divider + quantity % 5 * unit_price)
+    discount = Kata::Discount.new(product, discount_divider.to_s + " for " + offer.argument.to_s, discount_total)
+  end
+
   def awful_offer_handling_hack!(receipt, offers, catalog)
     @product_quantities.keys.each do |product|
       quantity = @product_quantities[product].to_i
@@ -61,8 +66,7 @@ class Kata::ShoppingCart
           discount = ten_percent(product, offer, quantity, unit_price)
         end
         if offer.offer_type == Kata::SpecialOfferType::FIVE_FOR_AMOUNT && quantity >= 5
-          discount_total = unit_price * quantity - (offer.argument * number_of_discount_divider + quantity % 5 * unit_price)
-          discount = Kata::Discount.new(product, discount_divider.to_s + " for " + offer.argument.to_s, discount_total)
+          discount = five_for_amount(product, unit_price, quantity, discount_divider, offer, number_of_discount_divider)
         end
 
         receipt.add_discount(discount) if discount
