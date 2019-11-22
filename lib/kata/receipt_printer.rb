@@ -16,11 +16,11 @@ class Kata::ReceiptPrinter
     Kata::ProductUnit::EACH == item.product.unit ? '%x' % item.quantity.to_i : '%.3f' % item.quantity
   end
 
+  private
+
   def whitespace(whitespace_size)
     ' ' * whitespace_size
   end
-
-  private
 
   def presentable_discounts(discounts)
     discounts.map { |d| receipt_discount_lines(d) }.join('')
