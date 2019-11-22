@@ -9,10 +9,9 @@ class Kata::ReceiptPrinter
       receipt_item_lines(item)
     end.join('')
 
-
-    receipt.discounts.each do |discount|
-      result += receipt_discount_lines(discount)
-    end
+    result += receipt.discounts.map do |discount|
+      receipt_discount_lines(discount)
+    end.join('')
 
     result += "\n"
     result + receipt_last_line(receipt.total_price)
