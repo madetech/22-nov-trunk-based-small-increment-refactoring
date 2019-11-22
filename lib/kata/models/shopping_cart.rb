@@ -20,10 +20,10 @@ class Kata::ShoppingCart
 
   def add_item_quantity(product, quantity)
     @items << Kata::ProductQuantity.new(product, quantity)
-    if @product_quantities.key?(product)
-      product_quantities[product] = product_quantities[product] + quantity
+    product_quantities[product] = if @product_quantities.key?(product)
+      product_quantities[product] + quantity
     else
-      product_quantities[product] = quantity
+      quantity
     end
   end
 
