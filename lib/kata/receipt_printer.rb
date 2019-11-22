@@ -20,6 +20,7 @@ class Kata::ReceiptPrinter
 
       result.concat(line)
     end
+
     for discount in receipt.discounts do
       product_presentation = discount.product.name
       price_presentation = "%.2f" % discount.discount_amount
