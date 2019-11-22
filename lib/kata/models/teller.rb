@@ -12,12 +12,11 @@ class Kata::Teller
     receipt = Kata::Receipt.new
 
     the_cart.items.each do |item|
-      product = item.product
-      quantity = item.quantity
-      unit_price = @catalog.unit_price(product)
-      price = quantity * unit_price
-      receipt.add_product(product, quantity, unit_price, price)
+      unit_price = @catalog.unit_price(item.product)
+      price = item.quantity * unit_price
+      receipt.add_product(item.product, item.quantity, unit_price, price)
     end
+
     the_cart.handle_offers(receipt, @offers, @catalog)
 
     receipt
