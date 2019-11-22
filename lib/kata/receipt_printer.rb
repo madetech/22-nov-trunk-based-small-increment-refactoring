@@ -16,7 +16,7 @@ class Kata::ReceiptPrinter
       line += "  " + unit_price + " * " + quantity + "\n"
     end
 
-    return line
+    line
   end
 
   def receipt_discount_lines(discount)
