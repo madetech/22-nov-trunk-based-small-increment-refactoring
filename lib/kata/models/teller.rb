@@ -16,7 +16,6 @@ class Kata::Teller
       price = item.quantity * unit_price
       receipt.add_product(item.product, item.quantity, unit_price, price)
     end
-
     the_cart.handle_offers(receipt, @offers, @catalog)
 
     receipt
