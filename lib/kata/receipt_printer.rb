@@ -31,7 +31,7 @@ class Kata::ReceiptPrinter
   end
 
   def print_receipt(receipt)
-    result = ""
+    result = ''
     receipt.items.each do |item|
       result.concat(receipt_item_lines(item))
     end
@@ -41,7 +41,7 @@ class Kata::ReceiptPrinter
     end
     result.concat("\n")
     price_presentation = format_price(receipt.total_price.to_f)
-    total = "Total: "
+    total = 'Total: '
     whitespace = self.class.whitespace(@columns - total.size - price_presentation.size)
     result.concat(total, whitespace, price_presentation)
     result.to_s
@@ -62,6 +62,6 @@ class Kata::ReceiptPrinter
   private
 
   def format_price(price)
-    "%.2f" % price
+    '%.2f' % price
   end
 end
