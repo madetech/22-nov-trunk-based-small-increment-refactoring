@@ -29,8 +29,7 @@ class Kata::ReceiptPrinter
   def presentable_receipt_item(item)
     line = present_in_two_columns(item.product_name, format_price(item.total_price))
 
-    is_multiple = item.quantity != 1
-    line.concat(presentable_receipt_price_workings_out(item)) if is_multiple
+    line.concat(presentable_receipt_price_workings_out(item)) if item.multiple?
 
     line
   end
