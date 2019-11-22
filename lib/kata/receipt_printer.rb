@@ -54,10 +54,6 @@ class Kata::ReceiptPrinter
   end
 
   def present_quantity(item)
-    self.class.present_quantity(item)
-  end
-
-  def self.present_quantity(item)
     if Kata::ProductUnit::EACH == item.product.unit
       '%x' % item.quantity.to_i
     else
