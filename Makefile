@@ -9,3 +9,7 @@ bundle:
 .PHONY: tcr
 tcr:
 	./tcr.sh
+
+.PHONY: pull
+pull:
+	git pull --rebase
