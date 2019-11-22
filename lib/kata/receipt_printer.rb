@@ -31,7 +31,7 @@ class Kata::ReceiptPrinter
   def receipt_last_line(total_price)
     price_presentation = format_price(total_price.to_f)
     total = 'Total: '
-    whitespace = self.class.whitespace(
+    whitespace = whitespace(
       @columns - total.size - price_presentation.size
     )
 
