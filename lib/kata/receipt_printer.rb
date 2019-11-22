@@ -4,10 +4,10 @@ class Kata::ReceiptPrinter
   end
 
   def receipt_item_lines(item)
-    price = "%.2f" % item.total_price
+    price = format_price(item.total_price)
     quantity = self.class.present_quantity(item)
     name = item.product.name
-    unit_price = "%.2f" % item.price
+    unit_price = format_price(item.price)
 
     whitespace_size = @columns - name.size - price.size
     line = name + self.class.whitespace(whitespace_size) + price + "\n"
@@ -21,7 +21,7 @@ class Kata::ReceiptPrinter
 
   def receipt_discount_lines(discount)
     product_presentation = discount.product.name
-    price_presentation = "%.2f" % discount.discount_amount
+    price_presentation = format_price(discount.discount_amount)
     description = discount.description
     whitespace = self.class.whitespace(
       @columns - 3 - product_presentation.size - description.size - price_presentation.size
@@ -40,7 +40,7 @@ class Kata::ReceiptPrinter
       result.concat(receipt_discount_lines(discount))
     end
     result.concat("\n")
-    price_presentation = "%.2f" % receipt.total_price.to_f
+    price_presentation = format_price(receipt.total_price.to_f)
     total = "Total: "
     whitespace = self.class.whitespace(@columns - total.size - price_presentation.size)
     result.concat(total, whitespace, price_presentation)
@@ -57,6 +57,12 @@ class Kata::ReceiptPrinter
       whitespace.concat(' ')
     end
     return whitespace
+  end
+
+  private
+
+  def format_price(price)
+    "%.2f" % price
   end
 
 end
