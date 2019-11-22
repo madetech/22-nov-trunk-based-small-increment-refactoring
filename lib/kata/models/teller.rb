@@ -5,7 +5,7 @@ class Kata::Teller
   end
 
   def add_special_offer(offer_type, product, argument)
-    @offers[product] = case (offer_type)
+    @offers[product] = case offer_type
                        when Kata::SpecialOfferType::THREE_FOR_TWO
                          Kata::ThreeForTwoOffer.new(product, argument)
                        when Kata::SpecialOfferType::TEN_PERCENT_DISCOUNT
