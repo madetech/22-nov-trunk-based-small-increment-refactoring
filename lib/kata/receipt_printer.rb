@@ -28,9 +28,7 @@ class Kata::ReceiptPrinter
   end
 
   def presentable_receipt_items(items)
-    items.map do |item|
-      receipt_item_lines(item)
-    end.join('')
+    items.map { |item| receipt_item_lines(item) }.join('')
   end
 
   def receipt_item_lines(item)
