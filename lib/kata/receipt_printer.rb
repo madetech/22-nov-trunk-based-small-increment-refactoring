@@ -27,11 +27,10 @@ class Kata::ReceiptPrinter
   end
 
   def presentable_receipt_item(item)
-    line = present_in_two_columns(item.product_name, format_price(item.total_price))
-
-    line.concat(presentable_receipt_price_workings_out(item))
-
-    line
+    [
+      present_in_two_columns(item.product_name, format_price(item.total_price)),
+      presentable_receipt_price_workings_out(item)
+    ].join('')
   end
 
   def presentable_receipt_price_workings_out(item)
