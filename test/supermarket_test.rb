@@ -40,9 +40,7 @@ class SupermarketTest < Minitest::Test
 
   def test_buy_two_get_one_free
     3.times { @the_cart.add_item(@toothbrush) }
-    @teller.add_special_offer(Kata::SpecialOfferType::THREE_FOR_TWO, @toothbrush, @catalog.unit_price(@toothbrush))
-    receipt = @teller.checks_out_articles_from(@the_cart)
-    verify Kata::ReceiptPrinter.new(40).print_receipt(receipt)
+    verify Kata::ReceiptPrinter.new(40).print_receipt(discount_onReceipt_toothbrush(@the_cart))
   end
 
   def test_buy_five_get_one_free 
@@ -102,5 +100,11 @@ class SupermarketTest < Minitest::Test
 
   def add_apple_offer_five_for_amount
     @teller.add_special_offer(Kata::SpecialOfferType::FIVE_FOR_AMOUNT, @apples, 6.99)
+  end
+
+  def discount_onReceipt_toothbrush(the_cart)
+    @teller.add_special_offer(Kata::SpecialOfferType::THREE_FOR_TWO, @toothbrush, @catalog.unit_price(@toothbrush))
+    receipt = @teller.checks_out_articles_from(@the_cart)
+    receipt
   end
 end
