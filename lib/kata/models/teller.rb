@@ -5,7 +5,11 @@ class Kata::Teller
   end
 
   def add_special_offer(offer_type, product, argument)
-    @offers[product] = Kata::Offer.new(offer_type, product, argument)
+    @offers[product] = case (offer_type)
+                       when nil
+                       else
+                         Kata::Offer.new(offer_type, product, argument)
+                       end
   end
 
   def boop_all_items_in(the_cart)
