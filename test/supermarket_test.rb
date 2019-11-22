@@ -39,15 +39,13 @@ class SupermarketTest < Minitest::Test
   end
 
   def test_buy_two_get_one_free
-    @the_cart.add_item(@toothbrush)
-    @the_cart.add_item(@toothbrush)
-    @the_cart.add_item(@toothbrush)
+   3.times { @the_cart.add_item(@toothbrush) }
     @teller.add_special_offer(Kata::SpecialOfferType::THREE_FOR_TWO, @toothbrush, @catalog.unit_price(@toothbrush))
     receipt = @teller.checks_out_articles_from(@the_cart)
     verify Kata::ReceiptPrinter.new(40).print_receipt(receipt)
   end
 
-  def test_buy_five_get_one_free
+  def test_buy_five_get_one_free 
     @the_cart.add_item(@toothbrush)
     @the_cart.add_item(@toothbrush)
     @the_cart.add_item(@toothbrush)
