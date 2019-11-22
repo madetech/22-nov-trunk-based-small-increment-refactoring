@@ -27,7 +27,6 @@ class Kata::TwoForAmountOffer < Kata::Offer
 end
 
 class Kata::FiveForAmountOffer < Kata::Offer
-
   def initialize(product, argument)
     super('FIVE_FOR_AMOUNT', product, argument)
   end
