@@ -1,5 +1,5 @@
 require "rake/testtask"
-
+# test merging
 Rake::TestTask.new do |t|
   t.description = "Run tests"
   t.test_files = FileList["test/**/*_test.rb"]
