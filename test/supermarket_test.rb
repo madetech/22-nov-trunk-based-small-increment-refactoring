@@ -70,9 +70,7 @@ class SupermarketTest < Minitest::Test
 
   def test_five_for_y_discount
     @the_cart.add_item_quantity(@apples, 5)
-    add_apple_offer_five_for_amount
-    receipt = @teller.checks_out_articles_from(@the_cart)
-    verify Kata::ReceiptPrinter.new(40).print_receipt(receipt)
+    verify Kata::ReceiptPrinter.new(40).print_receipt(add_apple_offer_five_for_amount)
   end
 
   def test_five_for_y_discount_with_six
@@ -98,6 +96,7 @@ class SupermarketTest < Minitest::Test
 
   def add_apple_offer_five_for_amount
     @teller.add_special_offer(Kata::SpecialOfferType::FIVE_FOR_AMOUNT, @apples, 6.99)
+    receipt = @teller.checks_out_articles_from(@the_cart)
   end
 
   def add_toothbrush_discount_to_receipt(the_cart)
