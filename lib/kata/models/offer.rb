@@ -6,6 +6,10 @@ class Kata::Offer
     @argument = argument
     @product = product
   end
+
+  def applies?
+    false
+  end
 end
 
 class Kata::ThreeForTwoOffer < Kata::Offer
