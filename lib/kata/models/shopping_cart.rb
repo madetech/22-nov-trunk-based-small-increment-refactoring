@@ -13,7 +13,7 @@ class Kata::ShoppingCart
   end
 
   def total_item_quantity(product, quantity)
-     @product_quantities.key?(product) ? @product_quantities[product] + quantity : quantity
+    @product_quantities.key?(product) ? @product_quantities[product] + quantity : quantity
   end
 
   def add_item_quantity(product, quantity)
