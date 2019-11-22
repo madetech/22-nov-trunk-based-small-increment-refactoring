@@ -48,12 +48,6 @@ class SupermarketTest < Minitest::Test
     verify Kata::ReceiptPrinter.new(40).print_receipt(add_toothbrush_discount_to_receipt(@the_cart))
   end
 
-  def test_loose_weight_product
-    @the_cart.add_item_quantity(@apples, 0.5)
-    receipt = @teller.checks_out_articles_from(@the_cart)
-    verify Kata::ReceiptPrinter.new(40).print_receipt(receipt)
-  end
-
   def test_percent_discount
     @the_cart.add_item(@rice)
     @teller.add_special_offer(Kata::SpecialOfferType::TEN_PERCENT_DISCOUNT, @rice, 10.0)
@@ -64,6 +58,12 @@ class SupermarketTest < Minitest::Test
   def test_x_for_y_discount
     2.times{ @the_cart.add_item(@cherry_tomatoes) }
     @teller.add_special_offer(Kata::SpecialOfferType::TWO_FOR_AMOUNT, @cherry_tomatoes, 0.99)
+    receipt = @teller.checks_out_articles_from(@the_cart)
+    verify Kata::ReceiptPrinter.new(40).print_receipt(receipt)
+  end
+
+  def test_loose_weight_product
+    @the_cart.add_item_quantity(@apples, 0.5)
     receipt = @teller.checks_out_articles_from(@the_cart)
     verify Kata::ReceiptPrinter.new(40).print_receipt(receipt)
   end
