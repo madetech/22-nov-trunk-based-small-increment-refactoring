@@ -9,15 +9,15 @@ class Kata::Teller
   end
 
   def boop_all_items_in(the_cart)
-    receipt = Kata::Receipt.new
 
-    the_cart.items.each do |item|
-      unit_price = @catalog.unit_price(item.product)
-      price = item.quantity * unit_price
-      receipt.add_product(item.product, item.quantity, unit_price, price)
+    Kata::Receipt.new.tap do |receipt|
+      the_cart.items.each do |item|
+        unit_price = @catalog.unit_price(item.product)
+        price = item.quantity * unit_price
+        receipt.add_product(item.product, item.quantity, unit_price, price)
+      end
+
+      the_cart.awful_offer_handling_hack(receipt, @offers, @catalog)
     end
-    the_cart.awful_offer_handling_hack(receipt, @offers, @catalog)
-
-    receipt
   end
 end
