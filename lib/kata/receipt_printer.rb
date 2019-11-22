@@ -5,7 +5,7 @@ class Kata::ReceiptPrinter
 
   def receipt_item_lines(item)
     price = format_price(item.total_price)
-    quantity = self.class.present_quantity(item)
+    quantity = present_quantity(item)
     name = item.product.name
     unit_price = format_price(item.price)
 
