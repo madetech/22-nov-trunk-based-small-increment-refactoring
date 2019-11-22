@@ -8,6 +8,12 @@ class Kata::Teller
     @offers[product] = case (offer_type)
                        when 'THREE_FOR_TWO'
                          Kata::ThreeForTwoOffer.new(product, argument)
+                       when 'TEN_PERCENT_DISCOUNT'
+                         Kata::TenPercentDiscountOffer.new(product, argument)
+                       when 'TWO_FOR_AMOUNT'
+                         Kata::TwoForAmountOffer.new(product, argument)
+                       when 'FIVE_FOR_AMOUNT'
+                         Kata::FiveForAmountOffer.new(product, argument)
                        else
                          Kata::Offer.new(offer_type, product, argument)
                        end
