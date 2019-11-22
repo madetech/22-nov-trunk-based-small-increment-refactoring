@@ -32,12 +32,16 @@ class Kata::ReceiptPrinter
     name = item.product_name
     unit_price = format_price(item.price)
 
-    whitespace_size = @columns - name.size - price.size
-    line = "#{name}#{whitespace(whitespace_size)}#{price}\n"
+    line = present_in_two_columns(name, price)
 
     line.concat("  #{unit_price} * #{quantity}\n") if item.quantity != 1
 
     line
+  end
+
+  def present_in_two_columns(left, right)
+    whitespace_size = @columns - left.size - right.size
+    "#{left}#{whitespace(whitespace_size)}#{right}\n"
   end
 
   def present_quantity(item)
