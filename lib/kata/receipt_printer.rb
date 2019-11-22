@@ -49,14 +49,14 @@ class Kata::ReceiptPrinter
   end
 
   def receipt_discount_lines(discount)
-    product_presentation = discount.product.name
+    product_name = discount.product.name
     discount_amount = format_price(discount.discount_amount)
     description = discount.description
     whitespace = whitespace(
-      @columns - 3 - product_presentation.size - description.size - discount_amount.size
+      @columns - 3 - product_name.size - description.size - discount_amount.size
     )
 
-    "#{description}(#{product_presentation})#{whitespace}-#{discount_amount}\n"
+    "#{description}(#{product_name})#{whitespace}-#{discount_amount}\n"
   end
 
   def presentable_totals(total_price)
