@@ -1,3 +1,3 @@
 #!/bin/bash
 
-bundle exec rake test && (git add -A ; git commit -am "TCR!" ; git push) || git reset --hard HEAD
+bundle exec rake test && (git add -A ; git commit -am "TCR!" ; git pull --rebase && git push) || git reset --hard HEAD
