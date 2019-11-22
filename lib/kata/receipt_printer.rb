@@ -28,7 +28,7 @@ class Kata::ReceiptPrinter
       something = self.class.whitespace(
         @columns - 3 - product_presentation.size - description.size - price_presentation.size
       )
-      result.concat("#{description}(#{product_presentation})#{something}-#{price_presentation}\n")
+      result += "#{description}(#{product_presentation})#{something}-#{price_presentation}\n"
     end
     result.concat("\n")
     price_presentation = "%.2f" % receipt.total_price.to_f
