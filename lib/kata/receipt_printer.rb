@@ -23,10 +23,10 @@ class Kata::ReceiptPrinter
   end
 
   def presentable_receipt_items(items)
-    items.map { |i| receipt_item_lines(i) }.join('')
+    items.map { |i| presentable_receipt_item(i) }.join('')
   end
 
-  def receipt_item_lines(item)
+  def presentable_receipt_item(item)
     price = format_price(item.total_price)
     quantity = present_quantity(item)
     name = item.product.name
