@@ -1,4 +1,6 @@
 class Kata::Receipt
+  attr_reader :items, :discounts
+
   def initialize
     @items = []
     @discounts = []
@@ -15,16 +17,8 @@ class Kata::Receipt
     nil
   end
 
-  def items
-    @items
-  end
-
   def add_discount(discount)
     @discounts << discount
     nil
-  end
-
-  def discounts
-    @discounts
   end
 end
