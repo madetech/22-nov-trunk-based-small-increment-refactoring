@@ -29,7 +29,7 @@ class Kata::ReceiptPrinter
   def presentable_receipt_item(item)
     price = format_price(item.total_price)
     quantity = present_quantity(item)
-    name = item.product.name
+    name = item.product_name
     unit_price = format_price(item.price)
 
     whitespace_size = @columns - name.size - price.size
