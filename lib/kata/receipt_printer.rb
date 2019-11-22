@@ -62,11 +62,7 @@ class Kata::ReceiptPrinter
   end
 
   def whitespace(size)
-    self.class.whitespace(size)
-  end
-
-  def self.whitespace(whitespace_size)
-    ' ' * whitespace_size
+    ' ' * size
   end
 
   private
