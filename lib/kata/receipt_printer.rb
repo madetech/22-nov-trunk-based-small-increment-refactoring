@@ -8,7 +8,7 @@ class Kata::ReceiptPrinter
       presentable_receipt_items(receipt.items),
       presentable_discounts(receipt.discounts),
       "\n",
-      receipt_last_line(receipt.total_price)
+      presentable_totals(receipt.total_price)
     ].join('')
   end
 
@@ -55,7 +55,7 @@ class Kata::ReceiptPrinter
     "#{description}(#{product_presentation})#{whitespace}-#{discount_amount}\n"
   end
 
-  def receipt_last_line(total_price)
+  def presentable_totals(total_price)
     price_presentation = format_price(total_price.to_f)
     total = 'Total: '
     whitespace = whitespace(
