@@ -93,7 +93,7 @@ class SupermarketTest < Minitest::Test
 
   def add_apple_offer_five_for_amount
     @teller.add_special_offer(Kata::SpecialOfferType::FIVE_FOR_AMOUNT, @apples, 6.99)
-    receipt = @teller.checks_out_articles_from(@the_cart)
+    @teller.checks_out_articles_from(@the_cart)
   end
 
   def add_toothbrush_discount_to_receipt(the_cart)
