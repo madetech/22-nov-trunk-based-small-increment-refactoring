@@ -9,7 +9,6 @@ class Kata::Teller
   end
 
   def boop_all_items_in(the_cart)
-
     Kata::Receipt.new.tap do |receipt|
       the_cart.items.each do |item|
         unit_price = @catalog.unit_price(item.product)
