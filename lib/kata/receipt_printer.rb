@@ -6,7 +6,7 @@ class Kata::ReceiptPrinter
   def print_receipt(receipt)
     result = ''
     receipt.items.each do |item|
-      result.concat(receipt_item_lines(item))
+      result += receipt_item_lines(item)
     end
 
     receipt.discounts.each do |discount|
