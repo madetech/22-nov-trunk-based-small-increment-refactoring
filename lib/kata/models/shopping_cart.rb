@@ -1,4 +1,6 @@
 class Kata::ShoppingCart
+  DEFAULT_QUANTITY = 1
+
   attr_reader :items, :product_quantities
 
   def initialize
@@ -7,7 +9,7 @@ class Kata::ShoppingCart
   end
 
   def add_item(product)
-    add_item_quantity(product, 1.0)
+    add_item_quantity(product, DEFAULT_QUANTITY)
   end
 
   def total_item_quantity(product, quantity)
