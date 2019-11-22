@@ -1,5 +1,5 @@
 module Approvals
-  def verify(output)
+  def verify_output_matches_text(output)
     if File.exist?(approval_filename)
       assert_equal File.read(approval_filename), output
     elsif ENV['APPROVALS_RECORD'] == 'yes'
