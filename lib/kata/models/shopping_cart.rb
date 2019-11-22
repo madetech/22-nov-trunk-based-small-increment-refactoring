@@ -6,12 +6,11 @@ class Kata::ShoppingCart
   end
 
   def items
-    Array.new @items
+    @items
   end
 
   def add_item(product)
     add_item_quantity(product, 1.0)
-    nil
   end
 
   def product_quantities
