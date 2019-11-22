@@ -11,10 +11,10 @@ class Kata::Teller
 
   def checks_out_articles_from(the_cart)
     receipt = Kata::Receipt.new
-    product_quantities = the_cart.items
-    for pq in product_quantities do
-      p = pq.product
-      quantity = pq.quantity
+    products = the_cart.items
+    for product in the_cart.items do
+      p = product.product
+      quantity = product.quantity
       unit_price = @catalog.unit_price(p)
       price = quantity * unit_price
       receipt.add_product(p, quantity, unit_price, price)
