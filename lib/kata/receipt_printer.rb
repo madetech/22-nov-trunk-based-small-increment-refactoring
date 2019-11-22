@@ -21,7 +21,7 @@ class Kata::ReceiptPrinter
     product_presentation = discount.product.name
     price_presentation = format_price(discount.discount_amount)
     description = discount.description
-    whitespace = self.class.whitespace(
+    whitespace = whitespace(
       @columns - 3 - product_presentation.size - description.size - price_presentation.size
     )
 
@@ -59,6 +59,10 @@ class Kata::ReceiptPrinter
     else
       '%.3f' % item.quantity
     end
+  end
+
+  def whitespace(size)
+    self.class.whitespace(size)
   end
 
   def self.whitespace(whitespace_size)
