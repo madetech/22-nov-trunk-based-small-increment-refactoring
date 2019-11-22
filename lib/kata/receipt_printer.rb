@@ -27,14 +27,9 @@ class Kata::ReceiptPrinter
   end
 
   def presentable_receipt_item(item)
-    price = format_price(item.total_price)
-    quantity = present_quantity(item)
-    name = item.product_name
-    unit_price = format_price(item.price)
+    line = present_in_two_columns(item.product_name, format_price(item.total_price))
 
-    line = present_in_two_columns(name, price)
-
-    line.concat("  #{unit_price} * #{quantity}\n") if item.quantity != 1
+    line.concat("  #{format_price(item.price)} * #{present_quantity(item)}\n") if item.quantity != 1
 
     line
   end
