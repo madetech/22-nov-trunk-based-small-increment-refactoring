@@ -64,8 +64,8 @@ class SupermarketTest < Minitest::Test
 
   def test_loose_weight_product
     @the_cart.add_item_quantity(@apples, 0.5)
-    receipt = @teller.checks_out_articles_from(@the_cart)
-    verify Kata::ReceiptPrinter.new(40).print_receipt(receipt)
+    verify Kata::ReceiptPrinter.new(40).print_receipt(add_apple_offer_five_for_amount)
+
   end
 
   def test_five_for_y_discount
