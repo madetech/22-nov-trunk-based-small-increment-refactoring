@@ -35,7 +35,7 @@ class Kata::ReceiptPrinter
     total = "Total: "
     whitespace = self.class.whitespace(@columns - total.size - price_presentation.size)
     result.concat(total, whitespace, price_presentation)
-    return result.to_s
+    result.to_s
   end
 
   def self.present_quantity(item)
