@@ -7,7 +7,7 @@ class Kata::Offer
     @product = product
   end
 
-  def applies?
+  def applies?(_)
     false
   end
 end
@@ -39,6 +39,10 @@ class Kata::TwoForAmountOffer < Kata::Offer
 
   def divider
     2
+  end
+
+  def applies?(quantity)
+    quantity >= 2
   end
 end
 
