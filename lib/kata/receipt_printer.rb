@@ -32,7 +32,9 @@ class Kata::ReceiptPrinter
         item.product_name,
         format_price(item.total_price)
       ),
-      presentable_receipt_price_workings_out(item)
+      presentable_receipt_price_workings_out(
+        item
+      )
     ].join('')
   end
 
