@@ -102,7 +102,6 @@ class SupermarketTest < Minitest::Test
 
   def add_toothbrush_discount_to_receipt(the_cart)
     @teller.add_special_offer(Kata::SpecialOfferType::THREE_FOR_TWO, @toothbrush, @catalog.unit_price(@toothbrush))
-    receipt = @teller.checks_out_articles_from(@the_cart)
-    receipt
+    @teller.checks_out_articles_from(@the_cart)
   end
 end
