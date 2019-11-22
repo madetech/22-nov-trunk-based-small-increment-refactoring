@@ -1,5 +1,4 @@
 class Kata::Receipt
-
   def initialize
     @items = []
     @discounts = []
@@ -7,6 +6,7 @@ class Kata::Receipt
 
   def total_price
     total = @items.sum(&:total_price)
+
     total - @discounts.sum(&:discount_amount)
   end
 
@@ -16,7 +16,7 @@ class Kata::Receipt
   end
 
   def items
-    Array.new @items
+    @items
   end
 
   def add_discount(discount)
@@ -25,7 +25,6 @@ class Kata::Receipt
   end
 
   def discounts
-    Array.new @discounts
+    @discounts
   end
-
 end
