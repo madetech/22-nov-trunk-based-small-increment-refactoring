@@ -8,7 +8,7 @@ class Kata::Teller
     @offers[product] = Kata::Offer.new(offer_type, product, argument)
   end
 
-  def checks_out_articles_from(the_cart)
+  def boop_all_items_in(the_cart)
     receipt = Kata::Receipt.new
 
     the_cart.items.each do |item|
