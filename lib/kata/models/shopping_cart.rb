@@ -27,6 +27,8 @@ class Kata::ShoppingCart
     end
   end
 
+
+
   def handle_offers(receipt, offers, catalog)
     for p in @product_quantities.keys do
       quantity = @product_quantities[p]
