@@ -20,11 +20,11 @@ class Kata::ShoppingCart
   end
 
   def handle_offers(receipt, offers, catalog)
-    @product_quantities.keys.each do |p|
-      quantity = @product_quantities[p].to_i
-      if offers.key?(p)
-        offer = offers[p]
-        unit_price = catalog.unit_price(p)
+    @product_quantities.keys.each do |product|
+      quantity = @product_quantities[product].to_i
+      if offers.key?(product)
+        offer = offers[product]
+        unit_price = catalog.unit_price(product)
         discount = nil
         x = 1
         if offer.offer_type == Kata::SpecialOfferType::THREE_FOR_TWO
@@ -35,7 +35,7 @@ class Kata::ShoppingCart
           if quantity >= 2
             total = offer.argument * quantity / x + quantity % 2 * unit_price
             discount_n = unit_price * quantity - total
-            discount = Kata::Discount.new(p, "2 for " + offer.argument.to_s, discount_n)
+            discount = Kata::Discount.new(product, "2 for " + offer.argument.to_s, discount_n)
           end
 
         end
@@ -45,14 +45,14 @@ class Kata::ShoppingCart
         number_of_x = quantity / x
         if offer.offer_type == Kata::SpecialOfferType::THREE_FOR_TWO && quantity > 2
           discount_amount = quantity * unit_price - ((number_of_x * 2 * unit_price) + quantity % 3 * unit_price)
-          discount = Kata::Discount.new(p, "3 for 2", discount_amount)
+          discount = Kata::Discount.new(product, "3 for 2", discount_amount)
         end
         if offer.offer_type == Kata::SpecialOfferType::TEN_PERCENT_DISCOUNT
-          discount = Kata::Discount.new(p, offer.argument.to_s + "% off", quantity * unit_price * offer.argument / 100.0)
+          discount = Kata::Discount.new(product, offer.argument.to_s + "% off", quantity * unit_price * offer.argument / 100.0)
         end
         if offer.offer_type == Kata::SpecialOfferType::FIVE_FOR_AMOUNT && quantity >= 5
           discount_total = unit_price * quantity - (offer.argument * number_of_x + quantity % 5 * unit_price)
-          discount = Kata::Discount.new(p, x.to_s + " for " + offer.argument.to_s, discount_total)
+          discount = Kata::Discount.new(product, x.to_s + " for " + offer.argument.to_s, discount_total)
         end
 
         receipt.add_discount(discount) if discount
