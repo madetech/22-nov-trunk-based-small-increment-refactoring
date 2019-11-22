@@ -28,7 +28,7 @@ When the team is confident it can handle this code, choose a pair to implement t
 **Rules**
 
 * Split into pairs.
-* When refactoring, use a modified version of TCR; `test && (commit ; push) || revert.` - you can run `make tcr`
+* When refactoring, use a modified version of TCR; `test && (commit ; pull --rebase ; push) || reset --hard HEAD.` - you can run `make tcr`
 * Don't go longer than 3 minutes without running your tests.
 * Push to master.
 * Collaborate to solve merge conflicts.
