@@ -22,9 +22,7 @@ class Kata::ReceiptPrinter
   private
 
   def presentable_discounts(discounts)
-    discounts.map do |discount|
-      receipt_discount_lines(discount)
-    end.join('')
+    discounts.map { |discount| receipt_discount_lines(discount) }.join('')
   end
 
   def presentable_receipt_items(items)
