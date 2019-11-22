@@ -6,6 +6,20 @@ class Kata::Offer
     @argument = argument
     @product = product
   end
+
+  def divider
+    case offer_type
+    when Kata::SpecialOfferType::THREE_FOR_TWO
+      discount_divider = 3
+    when Kata::SpecialOfferType::TWO_FOR_AMOUNT
+      discount_divider = 2
+    when Kata::SpecialOfferType:: FIVE_FOR_AMOUNT
+      discount_divider = 5
+    else
+      discount_divider = 1
+    end
+  end
+
 end
 
 class Kata::ThreeForTwoOffer < Kata::Offer
