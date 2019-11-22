@@ -13,8 +13,8 @@ class Kata::ReceiptPrinter
       result += receipt_discount_lines(discount)
     end
 
-    result.concat("\n")
-    result.concat(receipt_last_line(receipt.total_price))
+    result += "\n"
+    result += receipt_last_line(receipt.total_price)
   end
 
   def present_quantity(item)
