@@ -13,7 +13,7 @@ class Kata::ReceiptPrinter
     line = name + self.class.whitespace(whitespace_size) + price + "\n"
 
     if item.quantity != 1
-      line += "  " + unit_price + " * " + quantity + "\n"
+      line += "  #{unit_price} * #{quantity}\n"
     end
 
     line
