@@ -27,7 +27,7 @@ class Kata::ReceiptPrinter
       @columns - 3 - product_presentation.size - description.size - price_presentation.size
     )
 
-    return "#{description}(#{product_presentation})#{whitespace}-#{price_presentation}\n"
+    "#{description}(#{product_presentation})#{whitespace}-#{price_presentation}\n"
   end
 
   def print_receipt(receipt)
