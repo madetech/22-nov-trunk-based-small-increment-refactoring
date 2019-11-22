@@ -1,6 +1,6 @@
 module Kata::SpecialOfferType
   THREE_FOR_TWO = 'THREE_FOR_TWO'
   TEN_PERCENT_DISCOUNT = 'TEN_PERCENT_DISCOUNT'
-  TWO_FOR_AMOUNT = Object.new
+  TWO_FOR_AMOUNT = 'TWO_FOR_AMOUNT'
   FIVE_FOR_AMOUNT = Object.new
 end
