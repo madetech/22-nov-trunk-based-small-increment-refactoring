@@ -1,5 +1,4 @@
 class Kata::ReceiptPrinter
-
   def initialize(columns = 40)
     @columns = columns
   end
