@@ -10,7 +10,7 @@ class Kata::ReceiptPrinter
     end
 
     receipt.discounts.each do |discount|
-      result.concat(receipt_discount_lines(discount))
+      result += receipt_discount_lines(discount)
     end
 
     result.concat("\n")
