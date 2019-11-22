@@ -25,7 +25,7 @@ class Kata::ShoppingCart
     @product_quantities[product] = total_item_quantity(product, quantity)
   end
 
-  def handle_offers(receipt, offers, catalog)
+  def awful_offer_handling_hack(receipt, offers, catalog)
     @product_quantities.keys.each do |product|
       quantity = @product_quantities[product].to_i
       if offers.key?(product)
