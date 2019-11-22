@@ -35,7 +35,7 @@ class Kata::ReceiptPrinter
     total = "Total: "
     whitespace = self.class.whitespace(@columns - total.size - price_presentation.size)
 
-    return "#{total}#{whitespace}#{price_presentation}" 
+    "#{total}#{whitespace}#{price_presentation}" 
   end
 
   def print_receipt(receipt)
