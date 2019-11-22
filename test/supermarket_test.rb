@@ -75,23 +75,20 @@ class SupermarketTest < Minitest::Test
 
   def test_five_for_y_discount_with_six
     @the_cart.add_item_quantity(@apples, 6)
-    add_apple_offer_five_for_amount
-    receipt = @teller.checks_out_articles_from(@the_cart)
-    verify Kata::ReceiptPrinter.new(40).print_receipt(receipt)
+    verify Kata::ReceiptPrinter.new(40).print_receipt(add_apple_offer_five_for_amount)
+
   end
 
   def test_five_for_y_discount_with_sixteen
     @the_cart.add_item_quantity(@apples, 16)
-    add_apple_offer_five_for_amount
-    receipt = @teller.checks_out_articles_from(@the_cart)
-    verify Kata::ReceiptPrinter.new(40).print_receipt(receipt)
+    verify Kata::ReceiptPrinter.new(40).print_receipt(add_apple_offer_five_for_amount)
+
   end
 
   def test_five_for_y_discount_with_four
     @the_cart.add_item_quantity(@apples, 4)
-    add_apple_offer_five_for_amount
-    receipt = @teller.checks_out_articles_from(@the_cart)
-    verify Kata::ReceiptPrinter.new(40).print_receipt(receipt)
+    verify Kata::ReceiptPrinter.new(40).print_receipt(add_apple_offer_five_for_amount)
+
   end
 
   def add_apple_offer_five_for_amount
