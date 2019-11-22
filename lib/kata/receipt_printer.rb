@@ -18,7 +18,7 @@ class Kata::ReceiptPrinter
         line += "  " + unit_price + " * " + quantity + "\n"
       end
 
-      result.concat(line);
+      result.concat(line)
     end
     for discount in receipt.discounts do
       product_presentation = discount.product.name
