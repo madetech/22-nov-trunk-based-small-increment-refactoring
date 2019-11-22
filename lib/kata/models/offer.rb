@@ -7,3 +7,9 @@ class Kata::Offer
     @product = product
   end
 end
+
+class Kata::ThreeForTwoOffer < Kata::Offer
+  def initialize(product, argument)
+    super('THREE_FOR_TWO', product, argument)
+  end
+end
