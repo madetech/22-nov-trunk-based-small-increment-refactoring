@@ -48,7 +48,7 @@ class Kata::ReceiptPrinter
   end
 
   def self.present_quantity(item)
-    return Kata::ProductUnit::EACH == item.product.unit ? '%x' % item.quantity.to_i : '%.3f' % item.quantity
+    Kata::ProductUnit::EACH == item.product.unit ? '%x' % item.quantity.to_i : '%.3f' % item.quantity
   end
 
   def self.whitespace(whitespace_size)
