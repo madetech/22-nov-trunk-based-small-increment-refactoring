@@ -5,9 +5,10 @@ class Kata::ReceiptPrinter
 
   def print_receipt(receipt)
     result = ''
-    receipt.items.each do |item|
-      result += receipt_item_lines(item)
-    end
+    result += receipt.items.map do |item|
+      receipt_item_lines(item)
+    end.join('')
+
 
     receipt.discounts.each do |discount|
       result += receipt_discount_lines(discount)
