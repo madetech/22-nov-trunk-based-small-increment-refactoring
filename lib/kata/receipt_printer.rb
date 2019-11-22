@@ -4,11 +4,12 @@ class Kata::ReceiptPrinter
   end
 
   def print_receipt(receipt)
-    result = ''
-    result += presentable_receipt_items(receipt.items)
-    result += presentable_discounts(receipt.discounts)
-    result += "\n"
-    result + receipt_last_line(receipt.total_price)
+    [
+      presentable_receipt_items(receipt.items),
+      presentable_discounts(receipt.discounts),
+      "\n",
+      receipt_last_line(receipt.total_price)
+    ].join('')
   end
 
   def present_quantity(item)
