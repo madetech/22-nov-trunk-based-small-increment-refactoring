@@ -1,12 +1,9 @@
 class Kata::ShoppingCart
+  attr_reader :items
 
   def initialize
     @items = []
     @product_quantities = {}
-  end
-
-  def items
-    @items
   end
 
   def add_item(product)
@@ -25,8 +22,6 @@ class Kata::ShoppingCart
       quantity
     end
   end
-
-
 
   def handle_offers(receipt, offers, catalog)
     for p in @product_quantities.keys do
@@ -69,5 +64,4 @@ class Kata::ShoppingCart
       end
     end
   end
-
 end
